@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a routerLink="/">Awesome Blog</a>
+    <span class="example-spacer"></span>
+    <button mat-button (click)="openRegisterDialog()">Register
+      <mat-icon class="example-icon">create</mat-icon>
+    </button>
+    <button mat-button (click)="openLoginDialog()">Login
+      <mat-icon class="example-icon">fingerprint</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="new-post">
+        <mat-icon>add</mat-icon>
+        <span>Add Post</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>account_circle</mat-icon>
+        <span>My Profile</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
