@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # BlogSecurityAngularApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
@@ -72,4 +71,3 @@ Use these steps to clone from SourceTree, our client for using the repository co
 4. Open the directory you just created to see your repository’s files.
 
 Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
->>>>>>> 018a8dddaa80e48a126d2036a329b025cdb9e007
