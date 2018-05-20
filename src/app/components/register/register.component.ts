@@ -38,8 +38,7 @@ export class RegisterComponent implements OnInit {
 
   public onSubmit(): void {
     const observer = {
-      next: (user: any) => {
-      },
+      next: () => this.dialogRef.close(),
       error: err => console.log(err)
     };
 
