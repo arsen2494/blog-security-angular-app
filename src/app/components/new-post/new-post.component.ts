@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {PostService} from '../../services/post.service';
+import {IPost} from '../../models/post';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-post',
@@ -9,7 +12,9 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 export class NewPostComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private postService: PostService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -27,4 +32,16 @@ export class NewPostComponent implements OnInit {
     return this.form.get('description');
   }
 
+  public onSubmit(): void {
+    if (this.form.valid) {
+      const observer = {
+        next: (post: IPost) => {
+          this.router.navigate(['/']);
+        },
+        error: err => console.log(err)
+      };
+
+      this.postService.add(this.form.value).subscribe(observer);
+    }
+  }
 }
