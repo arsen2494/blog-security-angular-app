@@ -9,9 +9,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  public register(user: any): Observable<any> { // TODO make model for user
+  public register(user: any): Observable<any> {
     return this.http
-    .post(`${Config.API_URL}/users/register`, user)
+    .post(`${Config.API_URL}/users/register?username=${user.username}&password=${user.password}&email=${user.email}`, user)
     .map((response: any) => response);
   }
 
