@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../../services/post.service';
-import {IPost} from '../../models/post';
 import {Router} from '@angular/router';
 
 @Component({
@@ -35,7 +34,7 @@ export class NewPostComponent implements OnInit {
   public onSubmit(): void {
     if (this.form.valid) {
       const observer = {
-        next: (post: IPost) => {
+        next: (post: any) => {
           this.router.navigate(['/']);
         },
         error: err => console.log(err)

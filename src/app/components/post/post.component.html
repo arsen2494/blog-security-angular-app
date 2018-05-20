@@ -16,7 +16,9 @@
       </button>
     </div>
   </mat-card-actions>
-  <div>
-    <p *ngFor="let comment of comments" class="comment">{{comment.text}}</p>
+  <div id="comments-container">
+    <p *ngFor="let comment of comments" class="comment">{{comment.text}}
+      <small class="comment-date">{{ getCommentDate(comment.createdAt) }}</small>
+    </p>
   </div>
 </mat-card>

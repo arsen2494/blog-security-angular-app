@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {IPost} from '../../models/post';
-import {IComment} from '../../models/comment';
 import {PostService} from '../../services/post.service';
 import {ActivatedRoute} from '@angular/router';
 import {CommentService} from '../../services/comment.service';
@@ -11,10 +9,24 @@ import {CommentService} from '../../services/comment.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  public post: IPost;
+  public post: any;
   public postId: string;
-  public comments: Array<IComment>;
+  public comments: Array<any>;
   public comment: string;
+  public readonly months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
 
   constructor(private postService: PostService,
               route: ActivatedRoute,
@@ -29,7 +41,7 @@ export class PostComponent implements OnInit {
 
   private getPost(): void {
     const observer = {
-      next: (post: IPost) => this.post = post,
+      next: (post: any) => this.post = post,
       error: err => console.log(err)
     };
 
@@ -38,7 +50,7 @@ export class PostComponent implements OnInit {
 
   private getComments(): void {
     const observer = {
-      next: (comments: IComment[]) => this.comments = comments,
+      next: (comments: any[]) => this.comments = comments,
       error: err => console.log(err)
     };
 
@@ -52,7 +64,7 @@ export class PostComponent implements OnInit {
         postId: this.postId
       };
       const observer = {
-        next: (newComment: IComment) => {
+        next: (newComment: any) => {
           this.comments = [...this.comments, newComment];
           this.comment = '';
         },
@@ -61,5 +73,10 @@ export class PostComponent implements OnInit {
 
       this.commentService.createComment(comment).subscribe(observer);
     }
+  }
+
+  public getCommentDate(timestamp: string): string {
+    const date = new Date(timestamp);
+    return `${this.months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
   }
 }

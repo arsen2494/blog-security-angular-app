@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
-import { IPost } from "../../models/post";
-import { PostService } from '../../services/post.service';
+import {Component, OnInit} from '@angular/core';
+import {MatTableDataSource} from '@angular/material';
+import {PostService} from '../../services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +9,7 @@ import { PostService } from '../../services/post.service';
 })
 export class HomeComponent implements OnInit {
   public displayedColumns = ['number', 'title', 'description', 'action'];
-  public posts: Array<IPost>;
+  public posts: Array<any>;
   public dataSource: MatTableDataSource<any>;
 
   constructor(private postService: PostService) {
@@ -28,14 +27,14 @@ export class HomeComponent implements OnInit {
 
   private getPosts(): void {
     const observer = {
-      next: (posts: IPost[]) => {
+      next: (posts: any[]) => {
         this.posts = posts;
         this.dataSource = new MatTableDataSource(this.posts);
       },
       error: err => console.log(err)
     };
 
-    this.postService.getAll().subscribe(observer)
+    this.postService.getAll().subscribe(observer);
   }
 
 }

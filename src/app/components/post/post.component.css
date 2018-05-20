@@ -11,4 +11,10 @@
 .comment {
   font-size: 12px;
   margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-date {
+  color: gray;
 }

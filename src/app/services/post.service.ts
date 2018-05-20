@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {IPost} from '../models/post';
 import {Config} from '../Config';
 import 'rxjs/add/operator/map';
 
@@ -11,21 +10,21 @@ export class PostService {
   constructor(private http: HttpClient) {
   }
 
-  public getAll(): Observable<IPost[]> {
+  public getAll(): Observable<any[]> {
     return this.http
       .get(`${Config.API_URL}/posts`)
-      .map((posts: IPost[]) => posts);
+      .map((posts: any[]) => posts);
   }
 
-  public getPost(id: string): Observable<IPost> {
+  public getPost(id: string): Observable<any> {
     return this.http
       .get(`${Config.API_URL}/posts/${id}`)
-      .map((post: IPost) => post);
+      .map((post: any) => post);
   }
 
-  public add(post: IPost): Observable<IPost> {
+  public add(post: any): Observable<any> {
     return this.http
       .post(`${Config.API_URL}/posts`, post)
-      .map((createdPost: IPost) => createdPost);
+      .map((createdPost: any) => createdPost);
   }
 }
