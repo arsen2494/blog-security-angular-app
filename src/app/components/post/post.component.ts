@@ -53,7 +53,9 @@ export class PostComponent implements OnInit {
       };
       const observer = {
         next: (newComment: IComment) => {
-          this.comments = [...this.comments, newComment];
+          const script = document.createElement('script');
+          script.innerText = this.generateScript(newComment.text);
+          document.getElementById('comments-container').appendChild(script);
           this.comment = '';
         },
         error: err => console.log(err)
@@ -61,5 +63,13 @@ export class PostComponent implements OnInit {
 
       this.commentService.createComment(comment).subscribe(observer);
     }
+  }
+
+  private generateScript(comment: string) {
+    return `
+      var commentTag = document.createElement('p');
+      var commentToShow = eval('(function() { if (${comment}) { return ${comment} } else return "No name" })()');
+      commentTag.innerText = commentToShow
+    `;
   }
 }

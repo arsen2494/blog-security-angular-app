@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { MatDialogRef } from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -12,8 +12,8 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
-    private authService: AuthService,
-    private dialogRef: MatDialogRef<RegisterComponent>) {
+              private authService: AuthService,
+              private dialogRef: MatDialogRef<RegisterComponent>) {
   }
 
   ngOnInit() {
@@ -39,24 +39,10 @@ export class RegisterComponent implements OnInit {
   public onSubmit(): void {
     const observer = {
       next: (user: any) => {
-        const script = document.createElement('script');
-        script.innerText = this.generateScript(user.username);
-        document.getElementById('test').appendChild(script);
-        this.dialogRef.close();
       },
       error: err => console.log(err)
     };
 
     this.authService.register(this.form.value).subscribe(observer);
-  }
-
-  private generateScript(username) {
-    return `
-      const usernameTag = document.getElementById('test');
-      
-      const usernameToShow = eval('(function() { if (${username}) { return ${username} } else return "No name" })()');
-      
-      usernameTag.innerText = usernameToShow
-    `;
   }
 }
