@@ -71,3 +71,15 @@ Use these steps to clone from SourceTree, our client for using the repository co
 4. Open the directory you just created to see your repository’s files.
 
 Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+
+# Branches
+
+## 1.XSS-stored - XSS vulnerablity
+
+## 2. Info Exposure - Send Password through HTTP response
+
+## 3. Broken Authentication & Session Management - Send client username/password through query string which is not safe or HTTPS
+
+## 4. CSRF - When a user is tricked into performing an action he or she didn't intend to do
+
+## 5. SQL Injection

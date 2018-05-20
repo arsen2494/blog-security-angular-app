@@ -7,3 +7,8 @@
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+.comment {
+  font-size: 12px;
+  margin: 5px 0;
+}

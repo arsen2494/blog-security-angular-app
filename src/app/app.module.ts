@@ -14,10 +14,15 @@ import {
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HomeComponent} from './components/home/home.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { PostComponent } from './components/post/post.component';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PostService } from './services/post.service';
+import { CommentService } from './services/comment.service';
 
 
 @NgModule({
@@ -28,7 +33,8 @@ import { PostComponent } from './components/post/post.component';
     NavbarComponent,
     HomeComponent,
     NewPostComponent,
-    PostComponent
+    PostComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -40,14 +46,20 @@ import { PostComponent } from './components/post/post.component';
     MatProgressSpinnerModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    FormsModule,
     MatInputModule,
     MatDialogModule,
     MatTableModule,
     MatMenuModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    PostService,
+    CommentService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     RegisterComponent,
