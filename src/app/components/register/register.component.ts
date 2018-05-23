@@ -44,6 +44,9 @@ export class RegisterComponent implements OnInit {
       error: err => console.log(err)
     };
 
-    this.authService.register(this.form.value).subscribe(observer);
+    this.authService.register({
+      action: 'create',
+      args: this.form.value
+    }).subscribe(observer);
   }
 }
